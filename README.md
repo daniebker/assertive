@@ -1,6 +1,6 @@
-# Assertive, GO.
+# Assertive
 
-A go package for making Fluent Assertions on APIs. 
+A go package for making Fluent Assertions on web APIs. 
 
 ## Example 
 
@@ -12,3 +12,7 @@ A go package for making Fluent Assertions on APIs.
 		ReturnStatus200().
 		Assert()
 ```
+
+## DISCLAIMER
+
+This is still very much a work in progress. Expect things to change with every commit until something stable is released. 
