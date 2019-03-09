@@ -10,8 +10,7 @@ type Assert func(*http.Response) error
 
 // Assertion struct to wrap asserions
 type Assertion struct {
-	api *API
-	//response  *http.Response
+	api       *API
 	testSuite *testing.T
 	asserts   []Assert
 }
