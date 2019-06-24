@@ -17,6 +17,18 @@ func (assertion *Assertion) ReturnStatus200() *Assertion {
 	return assertion
 }
 
+// ReturnStatus201 checks the response was 200
+func (assertion *Assertion) ReturnStatus201() *Assertion {
+	assertion.asserts = append(assertion.asserts, StatusEqual(201))
+	return assertion
+}
+
+// ReturnStatus400 checks the response was 400
+func (assertion *Assertion) ReturnStatus400() *Assertion {
+	assertion.asserts = append(assertion.asserts, StatusEqual(400))
+	return assertion
+}
+
 // StatusEqual checks the response status equals the expected code
 func StatusEqual(code int) Assert {
 	return func(res *http.Response) error {

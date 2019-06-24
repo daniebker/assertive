@@ -1,6 +1,7 @@
 package assertive
 
 import (
+	"bytes"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -32,14 +33,13 @@ func (api *API) Get(path string) *API {
 	return api
 }
 
-// Post creates a POST request
-func (api *API) Post(path string) *API {
-	request := makeRequest("POST")
-
+// PostJSON creates a JSON POST request
+func (api *API) PostJSON(path string, json []byte) *API {
+	request, _ := http.NewRequest("POST", fmt.Sprintf("%s://%s/%s", api.url.Scheme, api.url.Host, path), bytes.NewBuffer(json))
+	request.Header = make(map[string][]string)
 	api.url.Path = path
-	request.URL = api.url
 	api.request = request
-	return api
+	return api.WithHeader("Content-Type", "application/json")
 }
 
 // DoRequest makes the request to the API
